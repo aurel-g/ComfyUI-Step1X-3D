@@ -236,7 +236,7 @@ class SaveUntexturedMesh:
             }
         }
 
-    RETURN_TYPES = ("PATH",)
+    RETURN_TYPES = ("MESH",)
     RETURN_NAMES = ("untexture_mesh_path",)
     FUNCTION = "save_untextured_mesh"
     CATEGORY = "Step1X-3D"
