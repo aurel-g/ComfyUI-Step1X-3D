@@ -12,25 +12,6 @@ from step1x3d_geometry.models.pipelines.pipeline_utils import reduce_face, remov
 from step1x3d_geometry.models.pipelines.pipeline import Step1X3DGeometryPipeline
 
 
-
-
-
-
-
-
-def texture_pipeline(input_image_path, input_glb_path, save_glb_path):
-    """
-    The texture model, input image and glb generate textured glb
-    """
-    mesh = trimesh.load(input_glb_path)
-    pipeline = Step1X3DTexturePipeline.from_pretrained("stepfun-ai/Step1X-3D", subfolder="Step1X-3D-Texture")
-    mesh = remove_degenerate_face(mesh)
-    mesh = reduce_face(mesh)
-    textured_mesh = pipeline(input_image_path, mesh, seed=2025)
-    os.makedirs(os.path.dirname(save_glb_path), exist_ok=True)
-    textured_mesh.export(save_glb_path)
-
-
 class LoadStep1X3DGeometryModel:
     @classmethod
     def INPUT_TYPES(s):
@@ -107,7 +88,7 @@ class LoadInputImage:
         return (input_image_path,)
 
 
-class 3DGeometryGeneration:
+class GeometryGeneration:
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -129,8 +110,11 @@ class 3DGeometryGeneration:
         """
         The base geometry model, input image generate glb
         """
+
+        # define the pipeline
         pipeline = Step1X3DGeometryPipeline.from_pretrained(geometry_model).to("cuda")
-    
+
+        # run pipeline and obtain the untextured mesh 
         generator = torch.Generator(device=pipeline.device)
         generator.manual_seed(seed)
         untextured_mesh = pipeline(input_image_path, guidance_scale=guidance_scale, num_inference_steps=num_inference_steps, generator=generator)
@@ -138,7 +122,7 @@ class 3DGeometryGeneration:
         return (untextured_mesh,)
 
 
-class 3DGeometryLabelGeneration:
+class GeometryLabelGeneration:
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -164,6 +148,8 @@ class 3DGeometryLabelGeneration:
         """
         The label geometry model, support using label to control generation, input image generate glb
         """
+
+        # define the pipeline
         pipeline = Step1X3DGeometryPipeline.from_pretrained(geometry_label_model).to("cuda")
         generator = torch.Generator(device=pipeline.device)
         generator.manual_seed(seed)
@@ -182,4 +168,62 @@ class 3DGeometryLabelGeneration:
     
         return (label_untextured_mesh,)
 
+
+class LoadUntexturedMesh:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "untexture_mesh_path": ("STRING", {"default": "untexture_mesh.glb"}),
+            }
+        }
+
+    RETURN_TYPES = ("MESH",)
+    RETURN_NAMES = ("input_glb_path",)
+    FUNCTION = "load_mesh"
+    CATEGORY = "Step1X-3D"
+
+    def load_mesh(self, untexture_mesh_path):
+        input_glb_path = untexture_mesh_path
+        return (input_glb_path,)
+
+
+class TexureSynthsis:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "texture_model": ("MODEL",),
+                "input_image_path": ("IMAGE",),
+                "input_glb_path": ("MESH",),
+                "seed": ("INT", {"default": 2025}),
+            }
+        }
+
+    RETURN_TYPES = ("TESTUREDMESH",)
+    RETURN_NAMES = ("textured_mesh",)
+    FUNCTION = "texure_synthsis"
+    CATEGORY = "Step1X-3D"
+
+    def texure_synthsis(self, texture_model, input_image_path, input_glb_path, seed):
+        """
+        The texture model, input image and glb generate textured glb
+        """
+
+        # load untextured mesh
+        mesh = trimesh.load(input_glb_path)
+
+        # define texture_pipeline
+        pipeline = Step1X3DTexturePipeline.from_pretrained(texture_model)
+
+        # reduce face
+        mesh = remove_degenerate_face(mesh)
+        mesh = reduce_face(mesh)
+
+        # texture mapping
+        textured_mesh = pipeline(input_image_path, mesh, seed=seed)
     
+        return (textured_mesh,)
+
+    
+     
