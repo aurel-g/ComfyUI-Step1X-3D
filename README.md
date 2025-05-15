@@ -19,7 +19,14 @@ git clone https://github.com/Yuan-ManX/ComfyUI-Step1X-3D.git
 ```
 cd ComfyUI-Step1X-3D
 
+pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu124
 pip install -r requirements.txt
+pip install torch-cluster -f https://data.pyg.org/whl/torch-2.5.1+cu124.html
+
+cd step1x3d_texture/custom_rasterizer
+python setup.py install
+cd ../differentiable_renderer
+python setup.py install
 ```
 
 
