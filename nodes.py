@@ -139,8 +139,8 @@ class GeometryLabelGeneration:
             }
         }
 
-    RETURN_TYPES = ("LABELUNTEXTUREDMESH",)
-    RETURN_NAMES = ("label_untextured_mesh",)
+    RETURN_TYPES = ("UNTEXTUREDMESH",)
+    RETURN_NAMES = ("untextured_mesh",)
     FUNCTION = "geometry_label_generation"
     CATEGORY = "Step1X-3D"
 
@@ -156,7 +156,7 @@ class GeometryLabelGeneration:
 
         label = {"symmetry": symmetry, "edge_type": edge_type}
     
-        label_untextured_mesh = pipeline(
+        untextured_mesh = pipeline(
             input_image_path,
             label=label,
             guidance_scale=guidance_scale,
@@ -166,7 +166,7 @@ class GeometryLabelGeneration:
             generator=generator
         )
     
-        return (label_untextured_mesh,)
+        return (untextured_mesh,)
 
 
 class LoadUntexturedMesh:
@@ -226,4 +226,44 @@ class TexureSynthsis:
         return (textured_mesh,)
 
     
-     
+class SaveUntexturedMesh:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "untextured_mesh": ("UNTEXTUREDMESH",),
+                "save_glb_path": ("STRING", {"default": "untexture_mesh.glb"}),
+            }
+        }
+
+    RETURN_TYPES = ("PATH",)
+    RETURN_NAMES = ("untexture_mesh_path",)
+    FUNCTION = "save_untextured_mesh"
+    CATEGORY = "Step1X-3D"
+
+    def save_untextured_mesh(self, untextured_mesh, save_glb_path):
+        untextured_mesh.mesh[0].export(save_glb_path)
+        untexture_mesh_path = save_glb_path
+        
+        return (untexture_mesh_path,)     
+
+    
+class SaveTexturedMesh:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "textured_mesh": ("TESTUREDMESH",),
+                "save_glb_path": ("STRING", {"default": "textured_mesh.glb"}),
+            }
+        }
+
+    RETURN_TYPES = ()
+    FUNCTION = "save_textured_mesh"
+    CATEGORY = "Step1X-3D"
+
+    def save_textured_mesh(self, textured_mesh, save_glb_path):
+        textured_mesh.export(save_glb_path)
+        
+        return ()     
+
