@@ -1,6 +1,6 @@
 # ComfyUI-Step1X-3D
 
-Make Step1X-3D avialbe in ComfyUI.
+ComfyUI-Step1X-3D is now available in ComfyUI, delivering high-fidelity 3D asset generation with consistent geometry-texture alignment. It supports multi-style outputs: cartoon, sketch, and photorealistic.
 
 [Step1X-3D](https://github.com/stepfun-ai/Step1X-3D): Towards High-Fidelity and Controllable Generation of Textured 3D Assets.
 
