@@ -7,8 +7,8 @@ from tqdm import tqdm
 from diffusers import DDIMScheduler
 from torchvision import transforms
 
-from step1x3d_geometry.utils.typing import *
-from step1x3d_geometry.utils.misc import get_device
+from ..utils.typing import *
+from ..utils.misc import get_device
 
 
 # Copied from diffusers.pipelines.stable_diffusion.pipeline_stable_diffusion.retrieve_timesteps

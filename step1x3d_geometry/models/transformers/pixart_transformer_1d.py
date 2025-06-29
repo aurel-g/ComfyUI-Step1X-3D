@@ -20,8 +20,8 @@ from diffusers.models.normalization import AdaLayerNormSingle
 from ..attention_processor import FusedAttnProcessor2_0, AttnProcessor2_0
 from ..attention import MultiCondBasicTransformerBlock
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.base import BaseModule
+from .... import step1x3d_geometry
+from ...utils.base import BaseModule
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 

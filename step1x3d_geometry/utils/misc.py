@@ -6,8 +6,8 @@ import torch
 import torch.distributed as dist
 from packaging import version
 
-from step1x3d_geometry.utils.config import config_to_primitive
-from step1x3d_geometry.utils.typing import *
+from .config import config_to_primitive
+from .typing import *
 
 
 def parse_version(ver: str):

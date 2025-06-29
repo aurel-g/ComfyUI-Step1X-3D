@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from torch.optim import lr_scheduler
 
-import step1x3d_geometry
+from .. import *
 
 
 def get_scheduler(name):

@@ -5,11 +5,11 @@ import os
 import torch
 import trimesh
 
-from step1x3d_texture.pipelines.step1x_3d_texture_synthesis_pipeline import (
+from .step1x3d_texture.pipelines.step1x_3d_texture_synthesis_pipeline import (
     Step1X3DTexturePipeline,
 )
-from step1x3d_geometry.models.pipelines.pipeline_utils import reduce_face, remove_degenerate_face
-from step1x3d_geometry.models.pipelines.pipeline import Step1X3DGeometryPipeline
+from .step1x3d_geometry.models.pipelines.pipeline_utils import reduce_face, remove_degenerate_face
+from .step1x3d_geometry.models.pipelines.pipeline import Step1X3DGeometryPipeline
 
 
 class LoadStep1X3DGeometryModel:

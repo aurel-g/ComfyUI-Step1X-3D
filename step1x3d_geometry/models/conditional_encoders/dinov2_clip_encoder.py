@@ -14,8 +14,8 @@ from transformers import T5EncoderModel, T5Tokenizer, AutoTokenizer
 from transformers.utils import ModelOutput
 from typing import Iterable, Optional, Union, List
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.typing import *
+from .... import step1x3d_geometry
+from ...utils.typing import *
 from .clip.modeling_clip import CLIPModel
 from .clip.modeling_conditional_clip import ConditionalCLIPModel
 from .base import BaseVisualEncoder, ImageType

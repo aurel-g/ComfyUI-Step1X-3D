@@ -6,7 +6,7 @@ import torch
 import trimesh
 import pymeshlab
 import tempfile
-from step1x3d_geometry.models.autoencoders.surface_extractors import MeshExtractResult
+from ..autoencoders.surface_extractors import MeshExtractResult
 
 logger = logging.get_logger(__name__)
 

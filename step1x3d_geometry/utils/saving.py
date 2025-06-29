@@ -16,7 +16,7 @@ from matplotlib.colors import LinearSegmentedColormap
 from PIL import Image, ImageDraw
 from pytorch_lightning.loggers import WandbLogger
 
-from step1x3d_geometry.utils.typing import *
+from .typing import *
 
 
 class SaverMixin:

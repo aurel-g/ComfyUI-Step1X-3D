@@ -33,9 +33,9 @@ from transformers import (
     BitImageProcessor,
 )
 
-import step1x3d_geometry
-from step1x3d_geometry.models.autoencoders.surface_extractors import MeshExtractResult
-from step1x3d_geometry.utils.config import ExperimentConfig, load_config
+from .... import step1x3d_geometry
+from ..autoencoders.surface_extractors import MeshExtractResult
+from ...utils.config import ExperimentConfig, load_config
 from ..autoencoders.michelangelo_autoencoder import MichelangeloAutoencoder
 from ..conditional_encoders.dinov2_encoder import Dinov2Encoder
 from ..conditional_encoders.t5_encoder import T5Encoder

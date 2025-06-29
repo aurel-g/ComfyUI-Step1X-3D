@@ -4,8 +4,8 @@ import subprocess
 
 import pytorch_lightning
 
-from step1x3d_geometry.utils.config import dump_config
-from step1x3d_geometry.utils.misc import parse_version
+from .config import dump_config
+from .misc import parse_version
 
 if parse_version(pytorch_lightning.__version__) > parse_version("1.8"):
     from pytorch_lightning.callbacks import Callback

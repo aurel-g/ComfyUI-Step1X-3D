@@ -6,8 +6,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.typing import *
+from .. import *
+from .typing import *
 
 
 def dot(x, y):

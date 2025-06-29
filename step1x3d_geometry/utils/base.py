@@ -13,9 +13,9 @@ from diffusers.utils import (
     extract_commit_hash,
 )
 
-from step1x3d_geometry.utils.config import parse_structured
-from step1x3d_geometry.utils.misc import get_device, load_module_weights
-from step1x3d_geometry.utils.typing import *
+from .config import parse_structured
+from .misc import get_device, load_module_weights
+from .typing import *
 
 
 class Configurable:

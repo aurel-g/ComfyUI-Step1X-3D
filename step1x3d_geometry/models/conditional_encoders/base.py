@@ -12,9 +12,9 @@ from transformers import CLIPModel, CLIPTokenizer, CLIPImageProcessor
 from transformers.utils import ModelOutput
 from typing import Iterable, Optional, Union, List
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.base import BaseModule
-from step1x3d_geometry.utils.typing import *
+from .... import step1x3d_geometry
+from ...utils.base import BaseModule
+from ...utils.typing import *
 
 ImageType = Union[np.ndarray, torch.Tensor, Image.Image]
 

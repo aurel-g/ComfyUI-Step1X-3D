@@ -12,11 +12,11 @@ from tqdm import trange
 from itertools import product
 from diffusers.models.modeling_utils import ModelMixin
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.checkpoint import checkpoint
-from step1x3d_geometry.utils.base import BaseModule
-from step1x3d_geometry.utils.typing import *
-from step1x3d_geometry.utils.misc import get_world_size, get_device
+from ... import *
+from ...utils.checkpoint import checkpoint
+from ...utils.base import BaseModule
+from ...utils.typing import *
+from ...utils.misc import get_world_size, get_device
 
 from .transformers.perceiver_1d import Perceiver
 from .transformers.attention import ResidualCrossAttentionBlock
@@ -469,7 +469,7 @@ class PerceiverCrossAttentionDecoder(ModelMixin, nn.Module):
             self._forward, (queries, latents), self.parameters(), self.use_checkpoint
         )
 
-
+from .... import step1x3d_geometry
 @step1x3d_geometry.register("michelangelo-autoencoder")
 class MichelangeloAutoencoder(BaseModule):
     r"""

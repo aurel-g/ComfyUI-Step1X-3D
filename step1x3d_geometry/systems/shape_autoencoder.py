@@ -4,11 +4,11 @@ import torch
 from skimage import measure
 from einops import repeat, rearrange
 
-import step1x3d_geometry
-from step1x3d_geometry.systems.base import BaseSystem
-from step1x3d_geometry.utils.ops import generate_dense_grid_points
-from step1x3d_geometry.utils.typing import *
-from step1x3d_geometry.utils.misc import get_rank
+from ... import step1x3d_geometry
+from .base import BaseSystem
+from ..utils.ops import generate_dense_grid_points
+from ..utils.typing import *
+from ..utils.misc import get_rank
 
 
 @step1x3d_geometry.register("shape-autoencoder-system")

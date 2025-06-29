@@ -9,9 +9,9 @@ import pytorch_lightning as pl
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
-from step1x3d_geometry import register
-from step1x3d_geometry.utils.typing import *
-from step1x3d_geometry.utils.config import parse_structured
+from .. import register
+from ..utils.typing import *
+from ..utils.config import parse_structured
 
 from streaming import StreamingDataLoader
 from .base import BaseDataModuleConfig, BaseDataset

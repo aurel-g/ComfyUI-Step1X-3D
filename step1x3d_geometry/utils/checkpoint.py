@@ -4,7 +4,7 @@ Adapted from: https://github.com/openai/guided-diffusion/blob/22e0df8183507e13a7
 """
 
 import torch
-from step1x3d_geometry.utils.typing import *
+from .typing import *
 
 
 def checkpoint(

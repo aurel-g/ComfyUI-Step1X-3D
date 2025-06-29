@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from step1x3d_geometry.models.pipelines.pipeline import Step1X3DGeometryPipeline
+from ..models.pipelines.pipeline import Step1X3DGeometryPipeline
 import numpy as np
 import json
 import copy
@@ -22,12 +22,12 @@ from diffusers.training_utils import (
     compute_snr,
     free_memory,
 )
-import step1x3d_geometry
-from step1x3d_geometry.systems.base import BaseSystem
-from step1x3d_geometry.utils.misc import get_rank
-from step1x3d_geometry.utils.typing import *
+from ... import step1x3d_geometry
+from .base import BaseSystem
+from ..utils.misc import get_rank
+from ..utils.typing import *
 from diffusers import DDIMScheduler
-from step1x3d_geometry.systems.utils import read_image, ddim_sample
+from .utils import read_image, ddim_sample
 
 
 # DEBUG = True

@@ -14,7 +14,7 @@ import torchvision.transforms as transforms
 from torch.utils.data import DataLoader, Dataset
 from PIL import Image
 
-from step1x3d_geometry.utils.typing import *
+from ..utils.typing import *
 
 
 @dataclass

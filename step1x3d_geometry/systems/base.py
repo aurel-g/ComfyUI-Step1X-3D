@@ -4,17 +4,17 @@ from dataclasses import dataclass, field
 import pytorch_lightning as pl
 import torch.nn.functional as F
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.base import (
+from ... import step1x3d_geometry
+from ..utils.base import (
     Updateable,
     update_end_if_possible,
     update_if_possible,
 )
-from step1x3d_geometry.utils.scheduler import parse_optimizer, parse_scheduler
-from step1x3d_geometry.utils.config import parse_structured
-from step1x3d_geometry.utils.misc import C, cleanup, get_device, load_module_weights
-from step1x3d_geometry.utils.saving import SaverMixin
-from step1x3d_geometry.utils.typing import *
+from ..utils.scheduler import parse_optimizer, parse_scheduler
+from ..utils.config import parse_structured
+from ..utils.misc import C, cleanup, get_device, load_module_weights
+from ..utils.saving import SaverMixin
+from ..utils.typing import *
 
 
 class BaseSystem(pl.LightningModule, Updateable, SaverMixin):

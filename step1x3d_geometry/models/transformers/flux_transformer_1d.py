@@ -36,8 +36,8 @@ from diffusers.models.normalization import (
 from ..attention_processor import FusedFluxAttnProcessor2_0, FluxAttnProcessor2_0
 from ..attention import FluxTransformerBlock, FluxSingleTransformerBlock
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.base import BaseModule
+from .... import step1x3d_geometry
+from ...utils.base import BaseModule
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 

@@ -8,23 +8,23 @@ from torchvision import transforms
 from tqdm import tqdm
 from transformers import AutoModelForImageSegmentation
 
-from step1x3d_texture.models.attention_processor import (
+from ..models.attention_processor import (
     DecoupledMVRowColSelfAttnProcessor2_0,
 )
-from step1x3d_texture.pipelines.ig2mv_sdxl_pipeline import IG2MVSDXLPipeline
-from step1x3d_texture.schedulers.scheduling_shift_snr import ShiftSNRScheduler
-from step1x3d_texture.utils import (
+from .ig2mv_sdxl_pipeline import IG2MVSDXLPipeline
+from ..schedulers.scheduling_shift_snr import ShiftSNRScheduler
+from ..utils import (
     get_orthogonal_camera,
     make_image_grid,
     tensor_to_image,
 )
-from step1x3d_texture.utils.render import NVDiffRastContextWrapper, load_mesh, render
-from step1x3d_texture.differentiable_renderer.mesh_render import MeshRender
+from ..utils.render import NVDiffRastContextWrapper, load_mesh, render
+from ..differentiable_renderer.mesh_render import MeshRender
 import trimesh
 import xatlas
 import scipy.sparse
 from scipy.sparse.linalg import spsolve
-from step1x3d_geometry.models.pipelines.pipeline_utils import smart_load_model
+from ...step1x3d_geometry.models.pipelines.pipeline_utils import smart_load_model
 
 
 class Step1X3DTextureConfig:

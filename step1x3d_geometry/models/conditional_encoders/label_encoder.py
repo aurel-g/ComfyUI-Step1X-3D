@@ -11,9 +11,9 @@ from diffusers.models.modeling_utils import ModelMixin
 from transformers.utils import ModelOutput
 from typing import Iterable, Optional, Union, List
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.typing import *
-from step1x3d_geometry.utils.misc import get_device
+from .... import step1x3d_geometry
+from ...utils.typing import *
+from ...utils.misc import get_device
 
 from .base import BaseLabelEncoder
 

@@ -12,8 +12,8 @@ from transformers import AutoImageProcessor, AutoModel
 from transformers.utils import ModelOutput
 from typing import Iterable, Optional, Union, List
 
-import step1x3d_geometry
-from step1x3d_geometry.utils.typing import *
+from .... import step1x3d_geometry
+from ...utils.typing import *
 from .base import BaseVisualEncoder, ImageType
 from .dinov2.modeling_dinov2 import Dinov2Model
 from .dinov2.modeling_conditional_dinov2 import ConditionalDinov2Model
